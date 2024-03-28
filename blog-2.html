@@ -1,0 +1,95 @@
+<h1 id="eleventy-essentials-from-zero-to-hero-with-project-setup-layouts-and-styling">Eleventy Essentials: From Zero to Hero with Project Setup, Layouts, and Styling</h1>
+<h2 id="introduction">Introduction</h2>
+<p>In the realm of static site generators, Eleventy (also known as 11ty) emerges as a flexible and straightforward option, making it a favored choice for developers looking to create fast, accessible websites without the overhead of complex configurations. This guide aims to walk you through the initial steps of setting up a new Eleventy project, designing reusable layouts, and effectively managing images and styles. Whether you are building a personal blog, a portfolio, or a small business site, these foundational skills will serve as the cornerstone of your Eleventy journey.</p>
+<h2 id="setting-up-your-eleventy-project">Setting Up Your Eleventy Project</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Basic knowledge of HTML and CSS</li>
+<li>Node.js and npm installed on your machine</li>
+</ul>
+<h3 id="step-1-project-initialization">Step 1: Project Initialization</h3>
+<ol>
+<li>Create a new directory for your project and navigate into it:<pre><code class="language-bash">mkdir my-eleventy-project &amp;&amp; cd my-eleventy-project
+</code></pre>
+</li>
+<li>Initialize a new npm project:<pre><code class="language-bash">npm init -y
+</code></pre>
+</li>
+<li>Install Eleventy:<pre><code class="language-bash">npm install --save-dev @11ty/eleventy
+</code></pre>
+</li>
+</ol>
+<h3 id="step-2-running-eleventy">Step 2: Running Eleventy</h3>
+<ul>
+<li>Start Eleventy in serve mode, which will watch your files for changes and refresh the browser automatically:<pre><code class="language-bash">npx eleventy --serve
+</code></pre>
+</li>
+<li>By default, Eleventy serves your site at <code>http://localhost:8080</code>.</li>
+</ul>
+
+<p><img src="https://github.com/java0525/blog-2/blob/main/start.png?raw=true" alt="start_image" width="75%"></p>
+
+<h2 id="creating-layouts">Creating Layouts</h2>
+<p>Layouts are templates that allow you to define a consistent structure for your pages, such as headers, footers, and navigation bars, without repeating code.</p>
+<h3 id="step-1-defining-a-base-layout">Step 1: Defining a Base Layout</h3>
+<ol>
+<li>Create a <code>_includes</code> directory in your project root. This is where your layout files will live.</li>
+<li>Inside <code>_includes</code>, create a file named <code>base.njk</code> (for Nunjucks, a templating language supported by Eleventy). This will be your base layout.</li>
+</ol>
+<p>Here&#39;s a simple example of what <code>base.njk</code> might contain:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;{{ title }}&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/global.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;!-- Your site&#39;s header --&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        {{ content | safe }}
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;!-- Your site&#39;s footer --&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="step-2-using-the-layout-in-pages">Step 2: Using the Layout in Pages</h3>
+<ul>
+<li><p>When creating a new page (e.g., <code>index.html</code>), you can specify this layout at the top of your file using Front Matter:</p>
+<pre><code class="language-html">---
+layout: base.njk
+title: Home Page
+---
+&lt;p&gt;Welcome to my Eleventy site!&lt;/p&gt;
+</code></pre>
+</li>
+</ul>
+<h2 id="managing-styles-and-images">Managing Styles and Images</h2>
+<h3 id="global-css-styles">Global CSS Styles</h3>
+<ul>
+<li>Create a <code>css</code> directory in your project root for your CSS files.</li>
+<li>For global styles, you might have a <code>global.css</code> file in this directory with site-wide styles.</li>
+<li>Reference this CSS file in your base layout, as shown in the <code>base.njk</code> example above.</li>
+</ul>
+<h3 id="page-specific-css-styles">Page Specific CSS Styles</h3>
+<ul>
+<li>For page-specific styles, create a CSS file corresponding to the page (e.g., <code>about.css</code> for <code>about.html</code>).</li>
+<li>Include a reference to this CSS file in the Front Matter of your page, and modify your base layout to conditionally load this file if it exists.</li>
+</ul>
+<h3 id="using-images">Using Images</h3>
+<ul>
+<li>Store your images in an <code>images</code> directory at the root of your project.</li>
+<li>Reference images in your HTML using relative paths, e.g., <code>&lt;img src=&quot;/images/my-image.jpg&quot; alt=&quot;Description&quot;&gt;</code>.</li>
+</ul>
+<p><img src="https://github.com/java0525/blog-2/blob/main/image.png?raw=true" alt="insert_image" width="35%"></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>You&#39;ve now laid the foundation for your Eleventy project, equipped with a reusable layout system and a structured approach to managing styles and images. This setup not only streamlines your development process but also ensures that your site remains maintainable and scalable as it grows.</p>
+<p>As you become more comfortable with Eleventy, explore its extensive features, such as data files, collections, and plugins, to further enhance your site. The flexibility and simplicity of Eleventy make it a powerful tool in your web development arsenal, enabling you to create fast, efficient, and accessible websites with ease.
+Happy coding!</p>
